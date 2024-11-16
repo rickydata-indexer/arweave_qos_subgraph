@@ -1,0 +1,17 @@
+{
+  "name": "qos-subgraph-arweave",
+  "license": "UNLICENSED",
+  "scripts": {
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy": "graph deploy --node https://api.studio.thegraph.com/deploy/ qos-subgraph-arweave",
+    "create-local": "graph create --node http://localhost:8020/ qos-subgraph-arweave",
+    "remove-local": "graph remove --node http://localhost:8020/ qos-subgraph-arweave",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 qos-subgraph-arweave",
+    "test": "graph test"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-cli": "0.89.0",
+    "@graphprotocol/graph-ts": "0.32.0"
+  }
+}
