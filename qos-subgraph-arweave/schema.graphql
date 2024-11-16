@@ -1,59 +1,23 @@
 type QoSDataPoint @entity {
-  "Transaction hash + data point index"
   id: ID!
-  
-  "Block timestamp"
   timestamp: BigInt!
-  
-  "The indexer these metrics are for"
-  indexer: IndexerStats!
-  
-  "The subgraph deployment being indexed"
-  subgraphDeployment: SubgraphDeployment!
-  
-  "Average number of blocks the indexer is behind"
-  avgIndexerBlocksBehind: BigDecimal!
-  
-  "Average latency in milliseconds"
-  avgIndexerLatencyMs: BigDecimal!
-  
-  "Maximum blocks behind"
-  maxIndexerBlocksBehind: BigDecimal!
-  
-  "Maximum latency in milliseconds" 
-  maxIndexerLatencyMs: BigDecimal!
-  
-  "Number of successful responses"
+  subgraphDeployment: String!
+  avgIndexerBlocksBehind: BigInt!
+  avgIndexerLatencyMs: BigInt!
+  maxIndexerBlocksBehind: BigInt!
+  maxIndexerLatencyMs: BigInt!
   numIndexer200Responses: BigInt!
-  
-  "Proportion of successful responses"
-  proportionIndexer200Responses: BigDecimal!
-  
-  "Number of queries"
+  proportionIndexer200Responses: BigInt!
   queryCount: BigInt!
-  
-  "Standard deviation of latency"
-  stdevIndexerLatencyMs: BigDecimal!
-  
-  "Chain ID (e.g. mainnet)"
+  stdevIndexerLatencyMs: BigInt!
   chainId: String!
-  
-  "End epoch"
   endEpoch: BigInt!
 }
 
-type IndexerStats @entity {
-  "Indexer address"
+type DebugLog @entity {
   id: ID!
-  
-  "All QoS data points for this indexer"
-  dataPoints: [QoSDataPoint!]! @derivedFrom(field: "indexer")
-}
-
-type SubgraphDeployment @entity {
-  "IPFS hash of the subgraph deployment"
-  id: ID!
-  
-  "QoS data points for this deployment"
-  dataPoints: [QoSDataPoint!]! @derivedFrom(field: "subgraphDeployment")
+  message: String!
+  step: String!
+  data: String!
+  timestamp: BigInt!
 }
