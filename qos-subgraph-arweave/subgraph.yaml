@@ -1,22 +1,21 @@
 specVersion: 1.0.0
-indexerHints:
-  prune: auto
+description: The Graph QoS Data Indexing from Arweave
 schema:
   file: ./schema.graphql
 dataSources:
   - kind: arweave
-    name: Contract
+    name: qos-data
     network: arweave-mainnet
     source:
-      owner: ""
+      owner: "f7QsdAM6sBC0UsUp1JoEXT93yMbCAPQIo1uBLhjDGSE"
+      startBlock: 1540353
     mapping:
-      apiVersion: 0.0.5
+      apiVersion: 0.0.6
       language: wasm/assemblyscript
-      entities:
-        - Block
-        - Transaction
-      blockHandlers:
-        - handler: handleBlock
-      transactionHandlers:
-        - handler: handleTx
       file: ./src/mapping.ts
+      entities:
+        - QoSDataPoint
+        - IndexerStats
+        - SubgraphDeployment
+      transactionHandlers:
+        - handler: handleQoSData
